@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add New Spell</title>
+</head>
+<body>
+	<form th:object="${newSpell}" th:action="@{/update/{id}(id=${newContact.id})}" method='POST'>
+		Name: <input name="name" size="20" th:field="*{name}"><br/>
+		Level: <input name="level" type="number" th:field="*{level}"><br/>
+		Tradition: <input name="tradition" size="20" th:field="*{tradition}"><br/>
+		Cantrip: <input name="cantrip" type="checkbox" th:field="*{cantrop}"><br/>
+		
+		<input name="submit" type="submit" value="value">
+	</form>
+	<a href="viewAll">View all Spells</a>
+</body>
+</html>

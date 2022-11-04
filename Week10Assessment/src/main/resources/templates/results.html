@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Spells</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr th:each="currentSpell : ${spells}">
+				<td th:text="${currentSpell.id}" />
+				<td th:text="${currentSpell.name" />
+				<td th:text="${currentSpell.tradition}" />
+				<td th:text="${currentSpell.level}" />
+				<td th:text="${currentSpell.cantrip}" />
+				<td><a th:href="@{/edit/{id}(id=${currentSpell.id})}">Edit</a></td>
+				<td><a th:href="@{/delete/{id}(id=${currentSpell.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+	<a href="../ilnputSpell">Add a new Spell</a>
+</body>
+</html>
