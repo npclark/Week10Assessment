@@ -3,12 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Add New Spell</title>
+<script>
+	function checkForm(form) 
+	{
+		// Checks if Name is empty
+		if(form.name.value == "") {
+			alert("Error: Please enter a spell name!");
+			form.name.focus();
+			return false;
+		}
+		// Checks if Level is empty
+		if(form.level.value == null) {
+			alert("Error: Please enter a spell level!");
+			form.level.focus();
+			return false;
+		}
+		// Checks if Tradition is empty
+		if(form.name.value == "") {
+			alert("Error: Please enter a spellcasting tradition!");
+			form.tradition.focus();
+			return false;
+		}
+		// Checks if Level is between 1 to 10
+		if(form.level.value < 1 || form.level.value > 10) {
+			alert("Error: Please enter a level between 1 to 10!");
+			form.level.focus();
+			return false;
+		}
+		
+		return true;
+	}
+</script>
 </head>
 <body>
-	<form th:object="${newSpell}" th:action="@{/update/{id}(id=${newContact.id})}" method='POST'>
-		Name: <input name="name" size="20" th:field="*{name}"><br/>
+	<form th:object="${newSpell}" th:action="@{/update/{id}(id=${newContact.id})}" method='POST' onsubmit="return checkForm(this)">
+		Name: <input name="name" type="text" size="20" th:field="*{name}"><br/>
 		Level: <input name="level" type="number" th:field="*{level}"><br/>
-		Tradition: <input name="tradition" size="20" th:field="*{tradition}"><br/>
+		Tradition: <input name="tradition" type="text" size="20" th:field="*{tradition}"><br/>
 		Cantrip: <input name="cantrip" type="checkbox" th:field="*{cantrop}"><br/>
 		
 		<input name="submit" type="submit" value="value">
